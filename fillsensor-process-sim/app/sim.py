@@ -13,13 +13,13 @@ tank1 = tank(name= 'tank1',
                    max_fill_level=4500, 
                    min_fill_level=600, 
                    fill_level=3900, 
-                   url='opc.tcp://latest-fillsensor-server-1:4840',
+                   url='opc.tcp://fillsensor-server:4840',
                    sim_step=sim_step)
 
 static_outflow = 40
 
 pump = pump(name= 'pump_tank1',
-              url='opc.tcp://latest-fillsensor-server-1:4840',
+              url='opc.tcp://fillsensor-server:4840',
               nominal_flow_rate= 60,
               flow_destination= tank1,
               sim_step=sim_step)
