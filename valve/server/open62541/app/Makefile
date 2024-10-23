@@ -1,5 +1,5 @@
 # Executable name
-EXE = chemical-valve-server
+EXE = valve-server
 
 # C compiler
 CC = gcc

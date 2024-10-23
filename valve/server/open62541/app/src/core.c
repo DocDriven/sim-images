@@ -21,7 +21,7 @@ static void stopHandler(int signum)
 /*
  * Argparser
  */
-const char* argp_program_version = "chemical-valve-server 0.1";
+const char* argp_program_version = "valve-server 0.1";
 const char* argp_program_bug_address = "las3@oth-regensburg.de";
 static char doc[] = "OPC UA server -- simulates a valve actuator";
 static char args_doc[] = "";
