@@ -16,7 +16,7 @@ if [ ! -z $INTERVAL ]; then
 fi
 
 # Create the database if it does not exist yet
-DBNAME="/usr/src/app/data.sqlite3"
+DB_NAME="/usr/src/app/data.sqlite3"
 
 # Define the SQL command for creating the table
 CREATE_DATA_TABLE="
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS tanksystemdata (
 );
 "
 
-sqlite3 "$DBNAME" <<EOF
+sqlite3 "$DB_NAME" <<EOF
 $CREATE_DATA_TABLE
 EOF
 
