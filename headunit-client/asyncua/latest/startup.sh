@@ -5,7 +5,7 @@ set -u
 
 # if OPCUA_SERVER_ADDRESS is set, then use it instead
 server_uri_opt=""
-if [ ! -z $OPCUA_SERVER_ADDRESS ]; then
+if [ ! -z $SERVER_URI ]; then
     server_uri_opt="--url "
 fi
 
@@ -39,6 +39,6 @@ EOF
 python3.11 /usr/src/app/vis.py &
 
 python3.11 /usr/src/app/client.py \
-    ${server_uri_opt}${OPCUA_SERVER_ADDRESS} \
+    ${server_uri_opt}${SERVER_URI} \
     ${interval_opt}${INTERVAL} \
     --database ${DB_NAME}

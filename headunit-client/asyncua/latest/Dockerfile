@@ -4,7 +4,7 @@ FROM debian:bookworm-slim AS base
 # this allows dynamic customization of container behavior
 
 # address of the PLC OPC UA server
-ENV OPCUA_SERVER_ADDRESS=
+ENV SERVER_URI=
 
 # update index and install packages if necessary with
 RUN apt-get update && apt-get install -y \
