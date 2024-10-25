@@ -6,13 +6,13 @@ set -u
 # if OPCUA_SERVER_ADDRESS is set, then use it instead
 server_uri_opt=""
 if [ ! -z $SERVER_URI ]; then
-    server_uri_opt="--url "
+    server_uri_opt="-u "
 fi
 
 # if INTERVAL is set, then use it instead
 interval_opt=""
 if [ ! -z $INTERVAL ]; then
-    interval_opt="--interval "
+    interval_opt="-i "
 fi
 
 # Create the database if it does not exist yet
@@ -41,4 +41,4 @@ python3.11 /usr/src/app/vis.py &
 python3.11 /usr/src/app/client.py \
     ${server_uri_opt}${SERVER_URI} \
     ${interval_opt}${INTERVAL} \
-    --database ${DB_NAME}
+    -d ${DB_NAME}
