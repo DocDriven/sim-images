@@ -7,7 +7,7 @@ set -u
 # including creating the tables
 DB_NAME="${DB_NAME:-/database/process_database.sqlite3}"
 LOCKFILE="${DB_NAME:-/database/process_database.sqlite3}.lock"
-while [ ! -f $LOCKFILE ]; do
+while [ ! -f "$LOCKFILE" ]; do
   sleep 1
 done
 
