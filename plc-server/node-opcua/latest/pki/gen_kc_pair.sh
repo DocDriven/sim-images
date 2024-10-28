@@ -13,9 +13,9 @@ fi
 openssl genrsa -out /pki/key.pem $KEY_LEN
 
 # Convert the key to DER format
-openssl pkey -inform PEM -outform DER -in key.pem -out key.der
+openssl pkey -inform PEM -outform DER -in /pki/key.pem -out /pki/key.der
 
 # Generate the certificate
-openssl req -x509 -new -key /pki/key.pem -out /pki/cert.pem -outform PEM \
+openssl req -x509 -new -key /pki/key.pem -out /pki/cert.der -outform DER \
         -config "$CONFIG_FILE" -days $DAYS_VALID \
         -addext "subjectAltName = URI:urn:opcua-server.local,IP:127.0.0.1,DNS:$HOSTNAME"
