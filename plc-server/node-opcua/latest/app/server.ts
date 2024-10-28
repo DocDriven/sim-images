@@ -97,8 +97,8 @@ type ServerProps = {
 async function server(serverProps: ServerProps) {
 
   console.table({
-    certificateFile: process.env.CERT_FILE || "/pki/cert.der",
-    privateKeyFile: process.env.PRIVATE_KEY_FILE || "/pki/key.der",
+    certificateFile: process.env.CERT_FILE || "/pki/cert.pem",
+    privateKeyFile: process.env.PRIVATE_KEY_FILE || "/pki/key.pem",
     ndoeEnv: process.env.NODE_ENV || "development",
   });
 
@@ -118,8 +118,8 @@ async function server(serverProps: ServerProps) {
       // opcua.SecurityPolicy.None
       opcua.SecurityPolicy.Basic256Sha256,
     ],
-    certificateFile: process.env.CERT_FILE || "/pki/cert.der",
-    privateKeyFile: process.env.PRIVATE_KEY_FILE || "/pki/key.der",
+    certificateFile: process.env.CERT_FILE || "/pki/cert.pem",
+    privateKeyFile: process.env.PRIVATE_KEY_FILE || "/pki/key.pem",
     securityModes: [
       // opcua.MessageSecurityMode.None
       opcua.MessageSecurityMode.SignAndEncrypt
