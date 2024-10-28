@@ -1,0 +1,12 @@
+[package]
+name = "opcua-server-rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+opcua = { version = "0.12", features = ["server"] }
+clap = { version = "4.0", features = ["derive", "string"] }
+rusqlite="0.32.1"
+tokio = { version = "1", features = ["full"] }
