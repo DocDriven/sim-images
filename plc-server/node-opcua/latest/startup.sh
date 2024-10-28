@@ -12,7 +12,7 @@ while [ ! -f "$LOCKFILE" ]; do
 done
 
 # generate the keys for encryption
-/pki/gen_kc_pair.sh
+cd /pki && /bin/bash gen_kc_pair.sh
 
 # start the server
 cd /app && npm start -- --database $DB_NAME
