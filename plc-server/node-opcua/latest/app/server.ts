@@ -184,7 +184,7 @@ async function server(serverProps: ServerProps) {
     tankSystemType,
     name: valvePosition,
     dataType: "Boolean",
-    initialValue: 0,
+    initialValue: false,
   });
 
   addVariable({
