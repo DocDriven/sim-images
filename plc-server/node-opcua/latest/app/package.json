@@ -1,0 +1,28 @@
+{
+  "name": "opcua-node",
+  "version": "0.1",
+  "description": "OPC UA Tank Simulation for research purposes",
+  "main": "server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "NODE_ENV=production node out/server.js"
+  },
+  "keywords": [
+    "OPC",
+    "UA"
+  ],
+  "author": "LaS3 <las3@oth-regensburg.de>",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "commander": "^12.1.0",
+    "node-opcua": "^2.130.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/commander": "^2.12.0"
+  }
+}
