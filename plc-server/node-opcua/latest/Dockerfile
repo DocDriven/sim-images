@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 VOLUME /database
 
 # Copy app files
-COPY plc-server/node-opcua/latest/app /app
+COPY /app /app
 
 # Build the app
 RUN cd /app && \
@@ -20,10 +20,10 @@ RUN cd /app && \
     npm run build
 
 # Copy the encryption-related files
-COPY plc-server/node-opcua/latest/pki /pki
+COPY /pki /pki
 
 # startup is controlled by this script which depends on environment variables
-COPY plc-server/node-opcua/latest/startup.sh /
+COPY startup.sh /
 
 # will be executed on startup
 ENTRYPOINT [ "usr/bin/env" ]
