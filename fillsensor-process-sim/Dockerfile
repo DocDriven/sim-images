@@ -27,6 +27,6 @@ FROM base AS runtime
 
 COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
 
-COPY fillsensor-process-sim/app /usr/src/app
+COPY /app /usr/src/app
 
 ENTRYPOINT [ "python3.11", "/usr/src/app/sim.py"]

@@ -23,7 +23,7 @@ RUN cd /app && \
 COPY /pki /pki
 
 # startup is controlled by this script which depends on environment variables
-COPY startup.sh /
+COPY /startup.sh /
 
 # will be executed on startup
 ENTRYPOINT [ "usr/bin/env" ]

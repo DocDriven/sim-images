@@ -37,13 +37,13 @@ VOLUME /database
 COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
 
 # Copy app files
-COPY plc-server/opcua-asyncio/latest/app /app
+COPY /app /app
 
 # Copy the encryption-related files
-COPY plc-server/opcua-asyncio/latest/pki /pki
+COPY /pki /pki
 
 # startup is controlled by this script which depends on environment variables
-COPY plc-server/opcua-asyncio/latest/startup.sh /
+COPY /startup.sh /
 
 # will be executed on startup
 ENTRYPOINT [ "usr/bin/env" ]

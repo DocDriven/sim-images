@@ -16,17 +16,17 @@ RUN apt-get update && apt-get install -y \
 VOLUME /database
 
 # Copy app files
-COPY plc-server/opcua/latest/app /usr/src/app
+COPY /app /usr/src/app
 
 # Build the app
 RUN cd /usr/src/app; \
     cargo build --release;
 
 # Copy the encryption-related files
-COPY plc-server/opcua/latest/pki /pki
+COPY /pki /pki
 
 # startup is controlled by this script which depends on environment variables
-COPY plc-server/opcua/latest/startup.sh /
+COPY /startup.sh /
 
 # will be executed on startup
 ENTRYPOINT [ "usr/bin/env" ]

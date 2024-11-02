@@ -37,12 +37,12 @@ FROM base AS runtime
 
 COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
 
-COPY headunit-client/asyncua/latest/app /usr/src/app
+COPY /app /usr/src/app
 
-COPY headunit-client/asyncua/latest/pki /pki
+COPY /pki /pki
 
 # startup is controlled by this script which depends on environment variables
-COPY headunit-client/asyncua/latest/startup.sh /
+COPY /startup.sh /
 
 # will be executed on startup
 ENTRYPOINT [ "usr/bin/env" ]

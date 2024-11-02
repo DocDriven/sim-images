@@ -27,7 +27,7 @@ RUN apt-get install -y \
     make && make install; \
     ldconfig /usr/local/bin
 
-COPY plc-server/open62541/latest/app /usr/src/app
+COPY /app /usr/src/app
 
 RUN cd /usr/src/app; make; make install
 
@@ -39,10 +39,10 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 
 COPY --from=builder /usr/local/lib /usr/local/lib
 
-COPY plc-server/open62541/latest/pki /pki
+COPY /pki /pki
 
 # startup is controlled by this script which depends on environment variables
-COPY plc-server/open62541/latest/startup.sh /
+COPY /startup.sh /
 
 ENTRYPOINT [ "usr/bin/env" ]
 

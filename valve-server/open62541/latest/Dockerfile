@@ -23,7 +23,7 @@ RUN apt-get install -y \
     make && make install; \
     ldconfig /usr/local/bin
 
-COPY valve-server/open62541/latest/app /usr/src/app
+COPY /app /usr/src/app
 
 RUN cd /usr/src/app; make; make install
 
@@ -34,7 +34,7 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /usr/local/lib /usr/local/lib
 
 # startup is controlled by this script which depends on environment variables
-COPY valve-server/open62541/latest/startup.sh /
+COPY /startup.sh /
 
 # will be executed on startup
 ENTRYPOINT [ "usr/bin/env" ]
