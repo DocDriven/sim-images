@@ -1,0 +1,1064 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2013-12-31T00:00:00Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+  <NamespaceUris>
+    <Uri>urn:open62541.server.application</Uri>
+  </NamespaceUris>
+  <Models>
+    <Model ModelUri="urn:open62541.server.application" Version="1.00" PublicationDate="2013-12-31T00:00:00Z" ModelVersion="1.0.0">
+      <RequiredModel ModelUri="http://opcfoundation.org/UA/" XmlSchemaUri="http://opcfoundation.org/UA/2008/02/Types.xsd" PublicationDate="2013-12-31T00:00:00Z" ModelVersion="1.0.0" />
+    </Model>
+  </Models>
+  <Aliases>
+    <Alias Alias="Boolean">i=1</Alias>
+    <Alias Alias="SByte">i=2</Alias>
+    <Alias Alias="Byte">i=3</Alias>
+    <Alias Alias="Int16">i=4</Alias>
+    <Alias Alias="UInt16">i=5</Alias>
+    <Alias Alias="Int32">i=6</Alias>
+    <Alias Alias="UInt32">i=7</Alias>
+    <Alias Alias="Int64">i=8</Alias>
+    <Alias Alias="UInt64">i=9</Alias>
+    <Alias Alias="Float">i=10</Alias>
+    <Alias Alias="Double">i=11</Alias>
+    <Alias Alias="DateTime">i=13</Alias>
+    <Alias Alias="String">i=12</Alias>
+    <Alias Alias="ByteString">i=15</Alias>
+    <Alias Alias="Guid">i=14</Alias>
+    <Alias Alias="XmlElement">i=16</Alias>
+    <Alias Alias="NodeId">i=17</Alias>
+    <Alias Alias="ExpandedNodeId">i=18</Alias>
+    <Alias Alias="QualifiedName">i=20</Alias>
+    <Alias Alias="LocalizedText">i=21</Alias>
+    <Alias Alias="StatusCode">i=19</Alias>
+    <Alias Alias="Structure">i=22</Alias>
+    <Alias Alias="Number">i=26</Alias>
+    <Alias Alias="Integer">i=27</Alias>
+    <Alias Alias="UInteger">i=28</Alias>
+    <Alias Alias="HasComponent">i=47</Alias>
+    <Alias Alias="HasProperty">i=46</Alias>
+    <Alias Alias="Organizes">i=35</Alias>
+    <Alias Alias="HasEventSource">i=36</Alias>
+    <Alias Alias="HasNotifier">i=48</Alias>
+    <Alias Alias="HasSubtype">i=45</Alias>
+    <Alias Alias="HasTypeDefinition">i=40</Alias>
+    <Alias Alias="HasModellingRule">i=37</Alias>
+    <Alias Alias="HasEncoding">i=38</Alias>
+    <Alias Alias="HasDescription">i=39</Alias>
+    <Alias Alias="HasCause">i=53</Alias>
+    <Alias Alias="ToState">i=52</Alias>
+    <Alias Alias="FromState">i=51</Alias>
+    <Alias Alias="HasEffect">i=54</Alias>
+    <Alias Alias="HasTrueSubState">i=9004</Alias>
+    <Alias Alias="HasFalseSubState">i=9005</Alias>
+    <Alias Alias="HasDictionaryEntry">i=17597</Alias>
+    <Alias Alias="HasCondition">i=9006</Alias>
+    <Alias Alias="HasGuard">i=15112</Alias>
+    <Alias Alias="HasAddIn">i=17604</Alias>
+    <Alias Alias="HasInterface">i=17603</Alias>
+  </Aliases>
+  <UAObjectType NodeId="ns=1;i=1" BrowseName="1:GenericDeviceType">
+    <DisplayName>GenericDeviceType</DisplayName>
+    <Description>Base Class for device specific data.</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=2</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=3</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=4</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=5</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=2" BrowseName="1:DeviceID" ParentNodeId="ns=1;i=1" DataType="String">
+    <DisplayName>DeviceID</DisplayName>
+    <Description>Localized Name of our custom node inside the system</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=3" BrowseName="1:Location" ParentNodeId="ns=1;i=1" DataType="String">
+    <DisplayName>Location</DisplayName>
+    <Description>World Readable location information</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=4" BrowseName="1:Manufacturer" ParentNodeId="ns=1;i=1" DataType="String">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>The device manufacturer</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=5" BrowseName="1:ModelNumber" ParentNodeId="ns=1;i=1" DataType="String">
+    <DisplayName>ModelNumber</DisplayName>
+    <Description>A unique Model number that can be referenced for our testing setup</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=6" BrowseName="1:GenericAlarmsType">
+    <DisplayName>GenericAlarmsType</DisplayName>
+    <Description>Base class for generic alarm properties and variables.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=7</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=8</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=9</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=10</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=11</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=7" BrowseName="1:AlarmHighLevel" ParentNodeId="ns=1;i=6" DataType="Boolean">
+    <DisplayName>AlarmHighLevel</DisplayName>
+    <Description>Indicated an active Alarm for ActualLevel greater than AlarmThresholdMax</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=6</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=8" BrowseName="1:AlarmLowLevel" ParentNodeId="ns=1;i=6" DataType="Boolean">
+    <DisplayName>AlarmLowLevel</DisplayName>
+    <Description>Indicated an active Alarm for ActualLevel less than AlarmThresholdMax</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=6</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=9" BrowseName="1:AlarmThresholdMin" ParentNodeId="ns=1;i=6" DataType="Double">
+    <DisplayName>AlarmThresholdMin</DisplayName>
+    <Description>Controls the minimum FillLevel required to trigger a alarm on MinThreshold</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=6</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10" BrowseName="1:AlarmThresholdMax" ParentNodeId="ns=1;i=6" DataType="Double">
+    <DisplayName>AlarmThresholdMax</DisplayName>
+    <Description>Controls the maximum Filllevel required to trigger a alarm on MaxThreshold</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=6</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=11" BrowseName="1:AlarmsEnabled" ParentNodeId="ns=1;i=6" DataType="Boolean">
+    <DisplayName>AlarmsEnabled</DisplayName>
+    <Description>Controls the enabled Alarm functionality for the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=6</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=12" BrowseName="1:GenericDiagnosticsType">
+    <DisplayName>GenericDiagnosticsType</DisplayName>
+    <Description>Base class for publishing diagnostic information.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=13</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=14</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=13" BrowseName="1:StatusOK" ParentNodeId="ns=1;i=12" DataType="Boolean">
+    <DisplayName>StatusOK</DisplayName>
+    <Description>Returns true if the device operates normal, Otherwise false</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=12</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=14" BrowseName="1:Fault" ParentNodeId="ns=1;i=12" DataType="Boolean">
+    <DisplayName>Fault</DisplayName>
+    <Description>Returns true if the device is outside of operational range, reading &gt; Maxlevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=12</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=15" BrowseName="1:GenericIOType">
+    <DisplayName>GenericIOType</DisplayName>
+    <Description>A generic sensor that read a process value.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=16</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=16" BrowseName="1:Output" ParentNodeId="ns=1;i=15" DataType="Boolean">
+    <DisplayName>Output</DisplayName>
+    <Description>Returns true if the Water Level is within operational Range (aka &gt; MinLevel), Otherwise false</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=63" BrowseName="1:WaterSensorMeasurementsType">
+    <DisplayName>WaterSensorMeasurementsType</DisplayName>
+    <Description>Base class for measurement functions of a water sensor.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=64</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=67</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=68</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=69</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject NodeId="ns=1;i=64" BrowseName="1:FillLevel" ParentNodeId="ns=1;i=63">
+    <DisplayName>FillLevel</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=65</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=66</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=63</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=65" BrowseName="1:Absolute" ParentNodeId="ns=1;i=64" DataType="Double">
+    <DisplayName>Absolute</DisplayName>
+    <Description>FillLevel of the connected Tank in the configured unit</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=64</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=66" BrowseName="1:Percent" ParentNodeId="ns=1;i=64" DataType="Double">
+    <DisplayName>Percent</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=64</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=67" BrowseName="1:Unit" ParentNodeId="ns=1;i=63" DataType="String">
+    <DisplayName>Unit</DisplayName>
+    <Description>defines a world readable string to how we represent the fill level (Percent)</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=68" BrowseName="1:MinLevel" ParentNodeId="ns=1;i=63" DataType="Double">
+    <DisplayName>MinLevel</DisplayName>
+    <Description>Defines the minimum Level the Sensor is configured for</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=69" BrowseName="1:MaxLevel" ParentNodeId="ns=1;i=63" DataType="Double">
+    <DisplayName>MaxLevel</DisplayName>
+    <Description>Defines the Maximum Level the Sensor is configured for</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=70" BrowseName="1:WaterTankMeasurementsType">
+    <DisplayName>WaterTankMeasurementsType</DisplayName>
+    <Description>Base class for measurement functions of a water sensor.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=71</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=74</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=75</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject NodeId="ns=1;i=71" BrowseName="1:FillLevel" ParentNodeId="ns=1;i=70">
+    <DisplayName>FillLevel</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=72</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=73</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=70</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=72" BrowseName="1:Absolute" ParentNodeId="ns=1;i=71" DataType="Double" AccessLevel="3">
+    <DisplayName>Absolute</DisplayName>
+    <Description>FillLevel of the connected Tank in the configured unit</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=71</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=73" BrowseName="1:Percent" ParentNodeId="ns=1;i=71" DataType="Double" AccessLevel="3">
+    <DisplayName>Percent</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=71</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=74" BrowseName="1:Unit" ParentNodeId="ns=1;i=70" DataType="String">
+    <DisplayName>Unit</DisplayName>
+    <Description>Defines a world readable string to how we represent the fill level (Percent)</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=70</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=75" BrowseName="1:Capacity" ParentNodeId="ns=1;i=70" DataType="Double">
+    <DisplayName>Capacity</DisplayName>
+    <Description>Defines the minimum Level the water tank is able to hold in units</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=70</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=76" BrowseName="1:GenericWaterSensorType">
+    <DisplayName>GenericWaterSensorType</DisplayName>
+    <Description>A generic water sensor that can be attached to an industrial process</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=77</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=82</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=84</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=91</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=94</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject NodeId="ns=1;i=77" BrowseName="1:Device" ParentNodeId="ns=1;i=76">
+    <DisplayName>Device</DisplayName>
+    <Description>Generic device information and base parameters</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=78</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=79</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=80</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=81</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=76</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=78" BrowseName="1:DeviceID" ParentNodeId="ns=1;i=77" DataType="String">
+    <DisplayName>DeviceID</DisplayName>
+    <Description>Localized Name of our custom node inside the system</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=77</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=79" BrowseName="1:Location" ParentNodeId="ns=1;i=77" DataType="String">
+    <DisplayName>Location</DisplayName>
+    <Description>World Readable location information</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=77</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=80" BrowseName="1:Manufacturer" ParentNodeId="ns=1;i=77" DataType="String">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>The device manufacturer</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=77</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=81" BrowseName="1:ModelNumber" ParentNodeId="ns=1;i=77" DataType="String">
+    <DisplayName>ModelNumber</DisplayName>
+    <Description>A unique Model number that can be referenced for our testing setup</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=77</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=82" BrowseName="1:IO" ParentNodeId="ns=1;i=76">
+    <DisplayName>IO</DisplayName>
+    <Description>Group for all IO related functions</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=83</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=76</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=83" BrowseName="1:Output" ParentNodeId="ns=1;i=82" DataType="Boolean">
+    <DisplayName>Output</DisplayName>
+    <Description>Returns true if the Water Level is within operational Range (aka &gt; MinLevel), Otherwise false</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=82</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=84" BrowseName="1:Measurement" ParentNodeId="ns=1;i=76">
+    <DisplayName>Measurement</DisplayName>
+    <Description>Measurement functions and properties defined by the sensor</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=85</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=88</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=89</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=90</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=85" BrowseName="1:FillLevel" ParentNodeId="ns=1;i=84">
+    <DisplayName>FillLevel</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=86</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=87</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=84</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=86" BrowseName="1:Absolute" ParentNodeId="ns=1;i=85" DataType="Double">
+    <DisplayName>Absolute</DisplayName>
+    <Description>FillLevel of the connected Tank in the configured unit</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=85</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=87" BrowseName="1:Percent" ParentNodeId="ns=1;i=85" DataType="Double">
+    <DisplayName>Percent</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=85</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=88" BrowseName="1:Unit" ParentNodeId="ns=1;i=84" DataType="String">
+    <DisplayName>Unit</DisplayName>
+    <Description>defines a world readable string to how we represent the fill level (Percent)</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=84</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=89" BrowseName="1:MinLevel" ParentNodeId="ns=1;i=84" DataType="Double">
+    <DisplayName>MinLevel</DisplayName>
+    <Description>Defines the minimum Level the Sensor is configured for</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=84</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=90" BrowseName="1:MaxLevel" ParentNodeId="ns=1;i=84" DataType="Double">
+    <DisplayName>MaxLevel</DisplayName>
+    <Description>Defines the Maximum Level the Sensor is configured for</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=84</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=91" BrowseName="1:Diagnostics" ParentNodeId="ns=1;i=76">
+    <DisplayName>Diagnostics</DisplayName>
+    <Description>Diagnostic functions and properties defined by the sensor</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=92</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=93</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=12</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=76</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=92" BrowseName="1:StatusOK" ParentNodeId="ns=1;i=91" DataType="Boolean">
+    <DisplayName>StatusOK</DisplayName>
+    <Description>Returns true if the device operates normal, Otherwise false</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=91</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=93" BrowseName="1:Fault" ParentNodeId="ns=1;i=91" DataType="Boolean">
+    <DisplayName>Fault</DisplayName>
+    <Description>Returns true if the device is outside of operational range, reading &gt; Maxlevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=91</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=94" BrowseName="1:Alarms" ParentNodeId="ns=1;i=76">
+    <DisplayName>Alarms</DisplayName>
+    <Description>Alarm related configuration and flags</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=95</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=96</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=97</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=98</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=99</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=76</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=95" BrowseName="1:AlarmHighLevel" ParentNodeId="ns=1;i=94" DataType="Boolean">
+    <DisplayName>AlarmHighLevel</DisplayName>
+    <Description>Indicated an active Alarm for ActualLevel greater than AlarmThresholdMax</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=94</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=96" BrowseName="1:AlarmLowLevel" ParentNodeId="ns=1;i=94" DataType="Boolean">
+    <DisplayName>AlarmLowLevel</DisplayName>
+    <Description>Indicated an active Alarm for ActualLevel less than AlarmThresholdMax</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=94</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=97" BrowseName="1:AlarmThresholdMin" ParentNodeId="ns=1;i=94" DataType="Double">
+    <DisplayName>AlarmThresholdMin</DisplayName>
+    <Description>Controls the minimum FillLevel required to trigger a alarm on MinThreshold</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=94</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=98" BrowseName="1:AlarmThresholdMax" ParentNodeId="ns=1;i=94" DataType="Double">
+    <DisplayName>AlarmThresholdMax</DisplayName>
+    <Description>Controls the maximum Filllevel required to trigger a alarm on MaxThreshold</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=94</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=99" BrowseName="1:AlarmsEnabled" ParentNodeId="ns=1;i=94" DataType="Boolean">
+    <DisplayName>AlarmsEnabled</DisplayName>
+    <Description>Controls the enabled Alarm functionality for the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=94</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=100" BrowseName="1:GenericWaterTankType">
+    <DisplayName>GenericWaterTankType</DisplayName>
+    <Description>A generic water tank</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=101</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=106</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=112</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject NodeId="ns=1;i=101" BrowseName="1:Device" ParentNodeId="ns=1;i=100">
+    <DisplayName>Device</DisplayName>
+    <Description>Generic device information and base parameters</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=102</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=103</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=104</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=105</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=100</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=102" BrowseName="1:DeviceID" ParentNodeId="ns=1;i=101" DataType="String">
+    <DisplayName>DeviceID</DisplayName>
+    <Description>Localized Name of our custom node inside the system</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=101</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=103" BrowseName="1:Location" ParentNodeId="ns=1;i=101" DataType="String">
+    <DisplayName>Location</DisplayName>
+    <Description>World Readable location information</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=101</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=104" BrowseName="1:Manufacturer" ParentNodeId="ns=1;i=101" DataType="String">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>The device manufacturer</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=101</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=105" BrowseName="1:ModelNumber" ParentNodeId="ns=1;i=101" DataType="String">
+    <DisplayName>ModelNumber</DisplayName>
+    <Description>A unique Model number that can be referenced for our testing setup</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=101</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=106" BrowseName="1:Measurement" ParentNodeId="ns=1;i=100">
+    <DisplayName>Measurement</DisplayName>
+    <Description>Measurement functions and properties defined by the sensor</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=107</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=110</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=111</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=70</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=100</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=107" BrowseName="1:FillLevel" ParentNodeId="ns=1;i=106">
+    <DisplayName>FillLevel</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=108</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=109</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=106</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=108" BrowseName="1:Absolute" ParentNodeId="ns=1;i=107" DataType="Double" AccessLevel="3">
+    <DisplayName>Absolute</DisplayName>
+    <Description>FillLevel of the connected Tank in the configured unit</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=107</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=109" BrowseName="1:Percent" ParentNodeId="ns=1;i=107" DataType="Double" AccessLevel="3">
+    <DisplayName>Percent</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=107</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=110" BrowseName="1:Unit" ParentNodeId="ns=1;i=106" DataType="String">
+    <DisplayName>Unit</DisplayName>
+    <Description>Defines a world readable string to how we represent the fill level (Percent)</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=106</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=111" BrowseName="1:Capacity" ParentNodeId="ns=1;i=106" DataType="Double">
+    <DisplayName>Capacity</DisplayName>
+    <Description>Defines the minimum Level the water tank is able to hold in units</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=106</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=112" BrowseName="1:Diagnostics" ParentNodeId="ns=1;i=100">
+    <DisplayName>Diagnostics</DisplayName>
+    <Description>Diagnostic functions and properties defined by the sensor</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=113</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=114</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=12</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=100</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=113" BrowseName="1:StatusOK" ParentNodeId="ns=1;i=112" DataType="Boolean">
+    <DisplayName>StatusOK</DisplayName>
+    <Description>Returns true if the device operates normal, Otherwise false</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=112</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=114" BrowseName="1:Fault" ParentNodeId="ns=1;i=112" DataType="Boolean">
+    <DisplayName>Fault</DisplayName>
+    <Description>Returns true if the device is outside of operational range, reading &gt; Maxlevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=112</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;s=indicator" BrowseName="1:IndicatorX001" SymbolicName="LevelIndicator">
+    <DisplayName>IndicatorX001</DisplayName>
+    <Description>A generic Water Level Sensor for Pentesting</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.device</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.io</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.meas</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.diag</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.alarm</Reference>
+      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;s=indicator.device" BrowseName="1:Device" ParentNodeId="ns=1;s=indicator">
+    <DisplayName>Device</DisplayName>
+    <Description>Generic device information and base parameters</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=indicator.device.id</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=indicator.device.location</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=indicator.device.manufacturer</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=indicator.device.modelnumber</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;s=indicator.device.id" BrowseName="1:DeviceID" ParentNodeId="ns=1;s=indicator.device" DataType="String">
+    <DisplayName>DeviceID</DisplayName>
+    <Description>Localized Name of our custom node inside the system</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=indicator.device</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.device.location" BrowseName="1:Location" ParentNodeId="ns=1;s=indicator.device" DataType="String">
+    <DisplayName>Location</DisplayName>
+    <Description>World Readable location information</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=indicator.device</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.device.manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=indicator.device" DataType="String">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>The device manufacturer</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=indicator.device</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.device.modelnumber" BrowseName="1:ModelNumber" ParentNodeId="ns=1;s=indicator.device" DataType="String">
+    <DisplayName>ModelNumber</DisplayName>
+    <Description>A unique Model number that can be referenced for our testing setup</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=indicator.device</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;s=indicator.io" BrowseName="1:IO" ParentNodeId="ns=1;s=indicator">
+    <DisplayName>IO</DisplayName>
+    <Description>Group for all IO related functions</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.io.output</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=15</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;s=indicator.io.output" BrowseName="1:Output" ParentNodeId="ns=1;s=indicator.io" DataType="Boolean">
+    <DisplayName>Output</DisplayName>
+    <Description>Returns true if the Water Level is within operational Range (aka &gt; MinLevel), Otherwise false</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.io</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;s=indicator.meas" BrowseName="1:Measurement" ParentNodeId="ns=1;s=indicator">
+    <DisplayName>Measurement</DisplayName>
+    <Description>Measurement functions and properties defined by the sensor</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.meas.filllevel</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=indicator.meas.unit</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=indicator.meas.minlevel</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=indicator.meas.maxlevel</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;s=indicator.meas.filllevel" BrowseName="1:FillLevel" ParentNodeId="ns=1;s=indicator.meas">
+    <DisplayName>FillLevel</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.meas.filllevel.abs</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.meas.filllevel.perc</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.meas</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;s=indicator.meas.filllevel.abs" BrowseName="1:Absolute" ParentNodeId="ns=1;s=indicator.meas.filllevel" DataType="Double">
+    <DisplayName>Absolute</DisplayName>
+    <Description>FillLevel of the connected Tank in the configured unit</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.meas.filllevel</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.meas.filllevel.perc" BrowseName="1:Percent" ParentNodeId="ns=1;s=indicator.meas.filllevel" DataType="Double">
+    <DisplayName>Percent</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.meas.filllevel</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.meas.unit" BrowseName="1:Unit" ParentNodeId="ns=1;s=indicator.meas" DataType="String">
+    <DisplayName>Unit</DisplayName>
+    <Description>defines a world readable string to how we represent the fill level (Percent)</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=indicator.meas</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.meas.minlevel" BrowseName="1:MinLevel" ParentNodeId="ns=1;s=indicator.meas" DataType="Double">
+    <DisplayName>MinLevel</DisplayName>
+    <Description>Defines the minimum Level the Sensor is configured for</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=indicator.meas</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.meas.maxlevel" BrowseName="1:MaxLevel" ParentNodeId="ns=1;s=indicator.meas" DataType="Double">
+    <DisplayName>MaxLevel</DisplayName>
+    <Description>Defines the Maximum Level the Sensor is configured for</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=indicator.meas</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;s=indicator.diag" BrowseName="1:Diagnostics" ParentNodeId="ns=1;s=indicator">
+    <DisplayName>Diagnostics</DisplayName>
+    <Description>Diagnostic functions and properties defined by the sensor</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.diag.ok</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.diag.fault</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=12</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;s=indicator.diag.ok" BrowseName="1:StatusOK" ParentNodeId="ns=1;s=indicator.diag" DataType="Boolean">
+    <DisplayName>StatusOK</DisplayName>
+    <Description>Returns true if the device operates normal, Otherwise false</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.diag</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.diag.fault" BrowseName="1:Fault" ParentNodeId="ns=1;s=indicator.diag" DataType="Boolean">
+    <DisplayName>Fault</DisplayName>
+    <Description>Returns true if the device is outside of operational range, reading &gt; Maxlevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.diag</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;s=indicator.alarm" BrowseName="1:Alarms" ParentNodeId="ns=1;s=indicator">
+    <DisplayName>Alarms</DisplayName>
+    <Description>Alarm related configuration and flags</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.alarm.high</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.alarm.low</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.alarm.threshmin</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.alarm.threshmax</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=indicator.alarms.enabled</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;s=indicator.alarm.high" BrowseName="1:AlarmHighLevel" ParentNodeId="ns=1;s=indicator.alarm" DataType="Boolean">
+    <DisplayName>AlarmHighLevel</DisplayName>
+    <Description>Indicated an active Alarm for ActualLevel greater than AlarmThresholdMax</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.alarm</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.alarm.low" BrowseName="1:AlarmLowLevel" ParentNodeId="ns=1;s=indicator.alarm" DataType="Boolean">
+    <DisplayName>AlarmLowLevel</DisplayName>
+    <Description>Indicated an active Alarm for ActualLevel less than AlarmThresholdMax</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.alarm</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.alarm.threshmin" BrowseName="1:AlarmThresholdMin" ParentNodeId="ns=1;s=indicator.alarm" DataType="Double">
+    <DisplayName>AlarmThresholdMin</DisplayName>
+    <Description>Controls the minimum FillLevel required to trigger a alarm on MinThreshold</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.alarm</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.alarm.threshmax" BrowseName="1:AlarmThresholdMax" ParentNodeId="ns=1;s=indicator.alarm" DataType="Double">
+    <DisplayName>AlarmThresholdMax</DisplayName>
+    <Description>Controls the maximum Filllevel required to trigger a alarm on MaxThreshold</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.alarm</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=indicator.alarms.enabled" BrowseName="1:AlarmsEnabled" ParentNodeId="ns=1;s=indicator.alarm" DataType="Boolean">
+    <DisplayName>AlarmsEnabled</DisplayName>
+    <Description>Controls the enabled Alarm functionality for the device</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=indicator.alarm</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;s=tank" BrowseName="1:TankV001" SymbolicName="Watertank">
+    <DisplayName>TankV001</DisplayName>
+    <Description>A generic Water Tank for Pentesting</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=tank.device</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=tank.meas</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=tank.diag</Reference>
+      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=100</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;s=tank.device" BrowseName="1:Device" ParentNodeId="ns=1;s=tank">
+    <DisplayName>Device</DisplayName>
+    <Description>Generic device information and base parameters</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;s=tank.device.id</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=tank.device.location</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=tank.device.manufacturer</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=tank.device.modelnumber</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=tank</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;s=tank.device.id" BrowseName="1:DeviceID" ParentNodeId="ns=1;s=tank.device" DataType="String">
+    <DisplayName>DeviceID</DisplayName>
+    <Description>Localized Name of our custom node inside the system</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=tank.device</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=tank.device.location" BrowseName="1:Location" ParentNodeId="ns=1;s=tank.device" DataType="String">
+    <DisplayName>Location</DisplayName>
+    <Description>World Readable location information</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=tank.device</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=tank.device.manufacturer" BrowseName="1:Manufacturer" ParentNodeId="ns=1;s=tank.device" DataType="String">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>The device manufacturer</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=tank.device</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=tank.device.modelnumber" BrowseName="1:ModelNumber" ParentNodeId="ns=1;s=tank.device" DataType="String">
+    <DisplayName>ModelNumber</DisplayName>
+    <Description>A unique Model number that can be referenced for our testing setup</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=tank.device</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;s=tank.meas" BrowseName="1:Measurement" ParentNodeId="ns=1;s=tank">
+    <DisplayName>Measurement</DisplayName>
+    <Description>Measurement functions and properties defined by the sensor</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=tank.meas.filllevel</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=tank.meas.unit</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;s=tank.meas.capacity</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=70</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=tank</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;s=tank.meas.filllevel" BrowseName="1:FillLevel" ParentNodeId="ns=1;s=tank.meas">
+    <DisplayName>FillLevel</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=tank.meas.filllevel.abs</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=tank.meas.filllevel.perc</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=tank.meas</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;s=tank.meas.filllevel.abs" BrowseName="1:Absolute" ParentNodeId="ns=1;s=tank.meas.filllevel" DataType="Double" AccessLevel="3">
+    <DisplayName>Absolute</DisplayName>
+    <Description>FillLevel of the connected Tank in the configured unit</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=tank.meas.filllevel</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=tank.meas.filllevel.perc" BrowseName="1:Percent" ParentNodeId="ns=1;s=tank.meas.filllevel" DataType="Double" AccessLevel="3">
+    <DisplayName>Percent</DisplayName>
+    <Description>FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=tank.meas.filllevel</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=tank.meas.unit" BrowseName="1:Unit" ParentNodeId="ns=1;s=tank.meas" DataType="String">
+    <DisplayName>Unit</DisplayName>
+    <Description>Defines a world readable string to how we represent the fill level (Percent)</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=tank.meas</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=tank.meas.capacity" BrowseName="1:Capacity" ParentNodeId="ns=1;s=tank.meas" DataType="Double">
+    <DisplayName>Capacity</DisplayName>
+    <Description>Defines the minimum Level the water tank is able to hold in units</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=tank.meas</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;s=tank.diag" BrowseName="1:Diagnostics" ParentNodeId="ns=1;s=tank">
+    <DisplayName>Diagnostics</DisplayName>
+    <Description>Diagnostic functions and properties defined by the sensor</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;s=tank.diag.ok</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;s=tank.diag.fault</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=12</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=tank</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;s=tank.diag.ok" BrowseName="1:StatusOK" ParentNodeId="ns=1;s=tank.diag" DataType="Boolean">
+    <DisplayName>StatusOK</DisplayName>
+    <Description>Returns true if the device operates normal, Otherwise false</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=tank.diag</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;s=tank.diag.fault" BrowseName="1:Fault" ParentNodeId="ns=1;s=tank.diag" DataType="Boolean">
+    <DisplayName>Fault</DisplayName>
+    <Description>Returns true if the device is outside of operational range, reading &gt; Maxlevel</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=tank.diag</Reference>
+    </References>
+  </UAVariable>
+</UANodeSet>
