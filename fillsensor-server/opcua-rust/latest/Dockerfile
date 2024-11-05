@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy app files
-COPY ./app /app
+COPY /app /app
 
 # Build the app
 RUN cd /app; \

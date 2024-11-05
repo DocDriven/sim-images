@@ -333,11 +333,11 @@ fn add_object_13(address_space: &mut AddressSpace) {
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("A generic Water Level Sensor for Pentesting"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.device"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.io"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.meas"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.diag"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.alarm"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
         (&NodeId::new(0, 85), &ReferenceTypeId::Organizes, ReferenceDirection::Inverse),
         (&NodeId::new(2, 76), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
     ]));
@@ -347,14 +347,14 @@ fn add_object_14(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:Device";
     let display_name = "Device";
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.device");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("Generic device information and base parameters"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.device.id"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.device.location"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.device.manufacturer"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.device.modelnumber"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
         (&NodeId::new(2, 1), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
         (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
@@ -364,11 +364,11 @@ fn add_object_15(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:IO";
     let display_name = "IO";
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.io");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("Group for all IO related functions"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.io.output"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
         (&NodeId::new(2, 15), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
         (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
@@ -378,14 +378,14 @@ fn add_object_16(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:Measurement";
     let display_name = "Measurement";
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.meas");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("Measurement functions and properties defined by the sensor"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.meas.filllevel"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.meas.unit"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.meas.minlevel"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.meas.maxlevel"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
         (&NodeId::new(2, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
         (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
@@ -395,14 +395,14 @@ fn add_object_17(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:FillLevel";
     let display_name = "FillLevel";
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.meas.filllevel");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.meas.filllevel.abs"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.meas.filllevel.perc"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
         (&NodeId::new(0, 58), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.meas"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -410,12 +410,12 @@ fn add_object_18(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:Diagnostics";
     let display_name = "Diagnostics";
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.diag");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("Diagnostic functions and properties defined by the sensor"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.diag.ok"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.diag.fault"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
         (&NodeId::new(2, 12), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
         (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
@@ -425,15 +425,15 @@ fn add_object_19(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:Alarms";
     let display_name = "Alarms";
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.alarm");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("Alarm related configuration and flags"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.alarm.high"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.alarm.low"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.alarm.threshmin"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.alarm.threshmax"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "indicator.alarms.enabled"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
         (&NodeId::new(2, 6), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
         (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
@@ -447,9 +447,9 @@ fn add_object_20(address_space: &mut AddressSpace) {
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("A generic Water Tank for Pentesting"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.device"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.meas"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.diag"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
         (&NodeId::new(0, 85), &ReferenceTypeId::Organizes, ReferenceDirection::Inverse),
         (&NodeId::new(2, 100), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
     ]));
@@ -459,14 +459,14 @@ fn add_object_21(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:Device";
     let display_name = "Device";
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.device");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("Generic device information and base parameters"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.device.id"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.device.location"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.device.manufacturer"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.device.modelnumber"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
         (&NodeId::new(2, 1), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
         (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
@@ -476,13 +476,13 @@ fn add_object_22(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:Measurement";
     let display_name = "Measurement";
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.meas");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("Measurement functions and properties defined by the sensor"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.meas.filllevel"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.meas.unit"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.meas.capacity"), &ReferenceTypeId::HasProperty, ReferenceDirection::Forward),
         (&NodeId::new(2, 70), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
         (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
@@ -492,14 +492,14 @@ fn add_object_23(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:FillLevel";
     let display_name = "FillLevel";
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.meas.filllevel");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.meas.filllevel.abs"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.meas.filllevel.perc"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
         (&NodeId::new(0, 58), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.meas"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -507,12 +507,12 @@ fn add_object_24(address_space: &mut AddressSpace) {
     // Object
     let browse_name = "1:Diagnostics";
     let display_name = "Diagnostics";
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.diag");
     let mut node = Object::new(&node_id, browse_name, display_name, EventNotifier::empty());
     node.set_description(LocalizedText::from("Diagnostic functions and properties defined by the sensor"));
     let _ = address_space.insert(node, Some(&[
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.diag.ok"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
+        (&NodeId::new(2, "tank.diag.fault"), &ReferenceTypeId::HasComponent, ReferenceDirection::Forward),
         (&NodeId::new(2, 12), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
         (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
@@ -1366,12 +1366,12 @@ fn add_variable_81(address_space: &mut AddressSpace) {
     let browse_name = "1:DeviceID";
     let display_name = "DeviceID";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.device.id");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("Localized Name of our custom node inside the system"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.device"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1380,12 +1380,12 @@ fn add_variable_82(address_space: &mut AddressSpace) {
     let browse_name = "1:Location";
     let display_name = "Location";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.device.location");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("World Readable location information"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.device"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1394,12 +1394,12 @@ fn add_variable_83(address_space: &mut AddressSpace) {
     let browse_name = "1:Manufacturer";
     let display_name = "Manufacturer";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.device.manufacturer");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("The device manufacturer"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.device"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1408,12 +1408,12 @@ fn add_variable_84(address_space: &mut AddressSpace) {
     let browse_name = "1:ModelNumber";
     let display_name = "ModelNumber";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.device.modelnumber");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("A unique Model number that can be referenced for our testing setup"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.device"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1422,12 +1422,12 @@ fn add_variable_85(address_space: &mut AddressSpace) {
     let browse_name = "1:Output";
     let display_name = "Output";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.io.output");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 1), None, None, value);
     node.set_description(LocalizedText::from("Returns true if the Water Level is within operational Range (aka > MinLevel), Otherwise false"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.io"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1436,12 +1436,12 @@ fn add_variable_86(address_space: &mut AddressSpace) {
     let browse_name = "1:Absolute";
     let display_name = "Absolute";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.meas.filllevel.abs");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("FillLevel of the connected Tank in the configured unit"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.meas.filllevel"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1450,12 +1450,12 @@ fn add_variable_87(address_space: &mut AddressSpace) {
     let browse_name = "1:Percent";
     let display_name = "Percent";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.meas.filllevel.perc");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.meas.filllevel"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1464,12 +1464,12 @@ fn add_variable_88(address_space: &mut AddressSpace) {
     let browse_name = "1:Unit";
     let display_name = "Unit";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.meas.unit");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("defines a world readable string to how we represent the fill level (Percent)"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.meas"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1478,12 +1478,12 @@ fn add_variable_89(address_space: &mut AddressSpace) {
     let browse_name = "1:MinLevel";
     let display_name = "MinLevel";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.meas.minlevel");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("Defines the minimum Level the Sensor is configured for"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.meas"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1492,12 +1492,12 @@ fn add_variable_90(address_space: &mut AddressSpace) {
     let browse_name = "1:MaxLevel";
     let display_name = "MaxLevel";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.meas.maxlevel");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("Defines the Maximum Level the Sensor is configured for"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.meas"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1506,12 +1506,12 @@ fn add_variable_91(address_space: &mut AddressSpace) {
     let browse_name = "1:StatusOK";
     let display_name = "StatusOK";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.diag.ok");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 1), None, None, value);
     node.set_description(LocalizedText::from("Returns true if the device operates normal, Otherwise false"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.diag"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1520,12 +1520,12 @@ fn add_variable_92(address_space: &mut AddressSpace) {
     let browse_name = "1:Fault";
     let display_name = "Fault";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.diag.fault");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 1), None, None, value);
     node.set_description(LocalizedText::from("Returns true if the device is outside of operational range, reading > Maxlevel"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.diag"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1534,12 +1534,12 @@ fn add_variable_93(address_space: &mut AddressSpace) {
     let browse_name = "1:AlarmHighLevel";
     let display_name = "AlarmHighLevel";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.alarm.high");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 1), None, None, value);
     node.set_description(LocalizedText::from("Indicated an active Alarm for ActualLevel greater than AlarmThresholdMax"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.alarm"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1548,12 +1548,12 @@ fn add_variable_94(address_space: &mut AddressSpace) {
     let browse_name = "1:AlarmLowLevel";
     let display_name = "AlarmLowLevel";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.alarm.low");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 1), None, None, value);
     node.set_description(LocalizedText::from("Indicated an active Alarm for ActualLevel less than AlarmThresholdMax"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.alarm"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1562,12 +1562,12 @@ fn add_variable_95(address_space: &mut AddressSpace) {
     let browse_name = "1:AlarmThresholdMin";
     let display_name = "AlarmThresholdMin";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.alarm.threshmin");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("Controls the minimum FillLevel required to trigger a alarm on MinThreshold"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.alarm"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1576,12 +1576,12 @@ fn add_variable_96(address_space: &mut AddressSpace) {
     let browse_name = "1:AlarmThresholdMax";
     let display_name = "AlarmThresholdMax";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.alarm.threshmax");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("Controls the maximum Filllevel required to trigger a alarm on MaxThreshold"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.alarm"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1590,12 +1590,12 @@ fn add_variable_97(address_space: &mut AddressSpace) {
     let browse_name = "1:AlarmsEnabled";
     let display_name = "AlarmsEnabled";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "indicator");
+    let node_id = NodeId::new(2, "indicator.alarms.enabled");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 1), None, None, value);
     node.set_description(LocalizedText::from("Controls the enabled Alarm functionality for the device"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "indicator"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "indicator.alarm"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1604,12 +1604,12 @@ fn add_variable_98(address_space: &mut AddressSpace) {
     let browse_name = "1:DeviceID";
     let display_name = "DeviceID";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.device.id");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("Localized Name of our custom node inside the system"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.device"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1618,12 +1618,12 @@ fn add_variable_99(address_space: &mut AddressSpace) {
     let browse_name = "1:Location";
     let display_name = "Location";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.device.location");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("World Readable location information"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.device"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1632,12 +1632,12 @@ fn add_variable_100(address_space: &mut AddressSpace) {
     let browse_name = "1:Manufacturer";
     let display_name = "Manufacturer";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.device.manufacturer");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("The device manufacturer"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.device"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1646,12 +1646,12 @@ fn add_variable_101(address_space: &mut AddressSpace) {
     let browse_name = "1:ModelNumber";
     let display_name = "ModelNumber";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.device.modelnumber");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("A unique Model number that can be referenced for our testing setup"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.device"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1660,12 +1660,12 @@ fn add_variable_102(address_space: &mut AddressSpace) {
     let browse_name = "1:Absolute";
     let display_name = "Absolute";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.meas.filllevel.abs");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("FillLevel of the connected Tank in the configured unit"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.meas.filllevel"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1674,12 +1674,12 @@ fn add_variable_103(address_space: &mut AddressSpace) {
     let browse_name = "1:Percent";
     let display_name = "Percent";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.meas.filllevel.perc");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("FillLevel of the connected Tank in Percent. Returns between 0 and 1 based off configured FillLevel"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.meas.filllevel"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1688,12 +1688,12 @@ fn add_variable_104(address_space: &mut AddressSpace) {
     let browse_name = "1:Unit";
     let display_name = "Unit";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.meas.unit");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 12), None, None, value);
     node.set_description(LocalizedText::from("Defines a world readable string to how we represent the fill level (Percent)"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.meas"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1702,12 +1702,12 @@ fn add_variable_105(address_space: &mut AddressSpace) {
     let browse_name = "1:Capacity";
     let display_name = "Capacity";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.meas.capacity");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 11), None, None, value);
     node.set_description(LocalizedText::from("Defines the minimum Level the water tank is able to hold in units"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 68), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.meas"), &ReferenceTypeId::HasProperty, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1716,12 +1716,12 @@ fn add_variable_106(address_space: &mut AddressSpace) {
     let browse_name = "1:StatusOK";
     let display_name = "StatusOK";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.diag.ok");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 1), None, None, value);
     node.set_description(LocalizedText::from("Returns true if the device operates normal, Otherwise false"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.diag"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
@@ -1730,12 +1730,12 @@ fn add_variable_107(address_space: &mut AddressSpace) {
     let browse_name = "1:Fault";
     let display_name = "Fault";
     let value = Variant::Empty;
-    let node_id = NodeId::new(2, "tank");
+    let node_id = NodeId::new(2, "tank.diag.fault");
     let mut node = Variable::new_data_value(&node_id, browse_name, display_name, NodeId::new(0, 1), None, None, value);
     node.set_description(LocalizedText::from("Returns true if the device is outside of operational range, reading > Maxlevel"));
     let _ = address_space.insert(node, Some(&[
         (&NodeId::new(0, 63), &ReferenceTypeId::HasTypeDefinition, ReferenceDirection::Forward),
-        (&NodeId::new(2, "tank"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
+        (&NodeId::new(2, "tank.diag"), &ReferenceTypeId::HasComponent, ReferenceDirection::Inverse),
     ]));
 }
 
