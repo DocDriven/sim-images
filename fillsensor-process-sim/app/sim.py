@@ -1,7 +1,7 @@
 from asyncua import Client
 import asyncio
 import time
-from waterworks_components import tank, pump, well
+from waterworks_components import tank, pump
 
 time.sleep(5)  # Wait for the server to start
 
@@ -13,22 +13,20 @@ tank1 = tank(name= 'tank1',
                    max_fill_level=4500, 
                    min_fill_level=600, 
                    fill_level=3900, 
-                   url='opc.tcp://fillsensor-server:4840',
+                   url='opc.tcp://levelsensor-server:4840',
                    sim_step=sim_step)
 
 static_outflow = 40
 
 pump = pump(name= 'pump_tank1',
-              url='opc.tcp://fillsensor-server:4840',
+              url='opc.tcp://levelsensor-server:4840',
               nominal_flow_rate= 60,
               flow_destination= tank1,
               sim_step=sim_step)
-
 async def update_water_tank(client, fill_percentage):
-    nsidx = 1 # Namespace index
     # Get the variable node for read / write
-    var = await client.nodes.root.get_child(
-        f"0:Objects/{nsidx}:tank1/{nsidx}:FillPercentage"
+    var = await client.nodes.objects.get_child(
+            f"2:TankV001/2:Measurement/2:FillLevel/2:Percent"
     )
     #write value
     await var.write_value(fill_percentage)
