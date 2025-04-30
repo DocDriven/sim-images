@@ -66,5 +66,5 @@ fi
 # the missing space for addresses is on purpose, as the
 # prefix opc.mqtt:// is included in the option variable
 
-# start the server
+# start the historian
 python3 /app/historian.py "${server_uri_opt}${SERVER_URI}" --database "$DB_NAME" 
