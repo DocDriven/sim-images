@@ -1,60 +1,69 @@
-from asyncua import Client
+import argparse
 import asyncio
-import time
-from waterworks_components import tank, pump
+import logging
 
-time.sleep(5)  # Wait for the server to start
+from asyncua import Client
+from waterworks_components import Tank, Pump
 
-sim_step = .1
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-tank1 = tank(name= 'tank1', 
-                   volume=1000, 
-                   height=5000, 
-                   max_fill_level=4500, 
-                   min_fill_level=600, 
-                   fill_level=3900, 
-                   url='opc.tcp://levelsensor-server:4840',
-                   sim_step=sim_step)
 
-static_outflow = 40
+async def main(server_uri: str):
+    sim_step = .1
+    static_outflow = 40
 
-pump = pump(name= 'pump_tank1',
-              url='opc.tcp://levelsensor-server:4840',
-              nominal_flow_rate= 60,
-              flow_destination= tank1,
-              sim_step=sim_step)
-async def update_water_tank(client, fill_percentage):
-    # Get the variable node for read / write
-    var = await client.nodes.objects.get_child(
-            f"2:TankV001/2:Measurement/2:FillLevel/2:Percent"
-    )
-    #write value
-    await var.write_value(fill_percentage)
-    #then read value again for verification  
-    value = await var.read_value()
-    print(f"new Value of fill_percentage: {fill_percentage}")
-    print(f"new Value of MyVariable ({var}): {value}")
+    tank1 = Tank(name = 'tank1',
+                 volume_m3 = 1000,
+                 height_mm = 5000,
+                 max_lvl_mm = 4500, 
+                 min_lvl_mm = 600, 
+                 lvl_mm = 3900, 
+                 sim_step_s=sim_step)
 
-rising = True
+    pump1 = Pump(name='pump1',
+                 nominal_flow_rate_lps = 60,
+                 sim_step = sim_step)
 
-async def main():
-    async with Client(tank1.url) as client:
-        while True:
-            # Start timer for simulation step
-            waiting4looptime = asyncio.create_task(asyncio.sleep(sim_step))
+    # auto-reconnect to server in any case
+    while True:
+        try:
+            logger.info(f"[INFO] Connecting to {server_uri}")
+            async with Client(url=server_uri) as client:
+                # Resolve fill level NodeId from browse path
+                node = await client.nodes.objects.get_child(
+                    "1:TankV001/1:Measurement/1:FillLevel/1:Percent")
+                logger.info(f"[INFO] Resolved fill level percentage to {node.nodeid}")
 
-            if tank1.fill_level >= tank1.max_fill and pump.pump_status == True:
-                pump.pump_status = False
+                while True:
+                    # Start timer to ensure minimal loop time of sim_step
+                    waiting_task = asyncio.create_task(asyncio.sleep(sim_step))
 
-            if tank1.fill_level <= tank1.min_fill and pump.pump_status == False:
-                pump.pump_status = True
+                    # Logic that runs concurrently
+                    if tank1.lvl_mm >= tank1.max_lvl_mm and pump1.pump_on == True:
+                        pump1.pump_on = False
 
-            meassured_flow = pump.get_flow_PT2()
-            tank1.calculate_new_fill_level([meassured_flow], [static_outflow])
+                    if tank1.lvl_mm <= tank1.min_lvl_mm and pump1.pump_on == False:
+                        pump1.pump_on = True
 
-            await update_water_tank(client, tank1.fill_percentage)
+                    measured_flow = pump1.get_flow()
+                    tank1.calculate_new_fill_level([measured_flow], [static_outflow])
+                    logger.info(f"[INFO] Writing to server with value {tank1.fill_pct}")
+                    await node.write_value(tank1.fill_pct)
 
-            # Wait for simulation step to end
-            await waiting4looptime
+                    # Ensure minimal loop time
+                    await waiting_task
 
-asyncio.run(main())
+        except Exception as e:
+            logger.warning(f"[WARN] Connection failed: {e}. Retrying in 2 seconds...")
+            await asyncio.sleep(2)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Watertank simulator with OPC UA client')
+    parser.add_argument('-s', '--server', type=str,
+                        default='opc.tcp://127.0.0.1:4840',
+                        help='OPC UA PLC server endpoint URI [default: opc.tcp://127.0.0.1:4840]')
+    args = parser.parse_args()
+
+    asyncio.run(main(args.server))

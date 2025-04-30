@@ -1,73 +1,122 @@
 import random
-from second_order_system import pt2_system_step
+from typing import Tuple
 
-class tank:
-    def __init__(self, name, volume, height, max_fill_level, min_fill_level, fill_level, url, sim_step=.1):
-        self.name = name
-        self.volume = volume*(10**3) # convert to l
-        self.height = height # in mm
-        self.max_fill = max_fill_level # in mm
-        self.min_fill = min_fill_level # in mm
-        self.fill_level = fill_level # in mm
-        self.fill_percentage = (self.fill_level) / self.height
-        self.url = url
-        self.sim_step = sim_step
-        self.client = None
 
-    def calculate_fill_volume(self, fill_level):
-        # calculate fill volume in l from fill level in mm
-        return self.volume * (fill_level / self.height)
-    
-    def calculate_fill_level(self, fill_volume):
-        # calculate fill level in mm from fill volume in l
-        return (fill_volume / self.volume) * self.height
-    
-    def calculate_new_fill_level(self, inflows, outflows):
-        # calculate new fill level in mm from sensor reading in mm, inflows in l/s and outflows in l/s
-        # flows with ambigous directions should be added to inflows with positive sign if headed towards tank
-        total_inflow = 0
-        for inflow in inflows:
-            total_inflow += inflow
-        total_outflow = 0
-        for outflow in outflows:
-            total_outflow += outflow
-        fill_volume = self.calculate_fill_volume(self.fill_level)
-        new_fill_volume = fill_volume + (total_inflow - total_outflow) * self.sim_step
-        new_fill_level = self.calculate_fill_level(new_fill_volume)
-        self.fill_level = new_fill_level
-        self.fill_percentage = (self.fill_level) * 100 / self.height
-        new_fill_level_meassured = new_fill_level + random.gauss(0, 10)
-        return new_fill_level_meassured
-    
-class pump:
-    def __init__(self, name, nominal_flow_rate, flow_destination, url = "", sim_step=.1):
+class Tank:
+    def __init__(self,
+                 name: str,
+                 volume_m3: float,
+                 height_mm: float,
+                 max_lvl_mm: float,
+                 min_lvl_mm: float,
+                 lvl_mm: float,
+                 sim_step_s: float =.1):
         self.name = name
-        self.url = url # IP address of OpenPLC Modbus server controlling the pump
-        self.pump_status = False # False = off, True = on
-        self.nominal_flow_rate = nominal_flow_rate # in l/s
-        self.current_flow_rate = 0.
-        self.d_current_flow_rate = 0.
-        self.flow_destination = flow_destination
+        self.volume_l = 1_000 * volume_m3
+        self.height_mm = height_mm
+        self.max_lvl_mm = max_lvl_mm
+        self.min_lvl_mm = min_lvl_mm
+        self.lvl_mm = lvl_mm
+        self.sim_step = sim_step_s
+        self.update_fill_pct()
+
+    def update_fill_pct(self):
+        """Update fill percentage from current fill level."""
+        self.fill_pct = 100 * self.lvl_mm / self.height_mm
+
+    def mm_to_l(self, lvl_mm: float) -> float:
+        """Calculate fill volume in liters from fill level in mm."""
+        return self.volume_l * (lvl_mm / self.height_mm)
+    
+    def l_to_mm(self, volume_l: float) -> float:
+        """Calculate fill level in mm from fill volume in liters."""
+        return self.height_mm * (volume_l / self.volume_l)
+    
+    def calculate_new_fill_level(self, inflows: list[float], outflows: list[float]) -> float:
+        """Update tank fill level based on inflows and outflows (both in liters/s)."""
+
+        total_inflow = sum(inflows)
+        total_outflow = sum(outflows)
+
+        current_volume_l = self.mm_to_l(self.lvl_mm)
+        new_volume_l = current_volume_l + (total_inflow - total_outflow) * self.sim_step
+
+        new_lvl_mm = self.l_to_mm(new_volume_l)
+        self.lvl_mm = new_lvl_mm
+        self.update_fill_pct()
+
+        # Add random sensor noise
+        return new_lvl_mm + random.gauss(0, 10)
+
+
+class Pump:
+    def __init__(self,
+                 name: str,
+                 nominal_flow_rate_lps: float,
+                 sim_step: float =.1):
+        self.name = name
+        self.pump_on = False
+        self.nominal_flow_rate_lps = nominal_flow_rate_lps
+        self.current_flow_rate_lps = 0.
+        self.d_current_flow_rate_lps2 = 0.
         self.sim_step = sim_step
-        self.K = 1.0         # Gain
+        self.K = 1.          # Gain
         self.zeta = 0.7      # Damping ratio
         self.tau = 0.1       # Time constant
         self.dt = 0.01       # Time step size
-        self.client = None
 
+    @staticmethod
+    def _pt2_system_step(
+        s: Tuple[float, float],
+        u: float,
+        dt: float,
+        K: float,
+        zeta: float,
+        tau: float
+    ) -> Tuple[float, float]:
+        """
+        Calculate the next value of a second-order system (PT2) using the Euler method.
 
-    def get_flow_PT2(self):
-        # Return meassured outflow in l/s and store real outflow in self.current_flow_rate
-        # Simplified model: outflow responds to pump status change with a second order system
-        error =  random.gauss(0, 5) * (self.current_flow_rate/self.nominal_flow_rate)
-        if self.pump_status == True:
-            input_signal = self.nominal_flow_rate
+        Parameters:
+            s: Current state [y(t), y'(t)]
+            u: Input at the current time step
+            dt: Time step size
+            K: Gain
+            zeta: Damping ratio
+            tau: Time constant
+
+        Returns:
+            Next state [y(t+dt), y'(t+dt)]
+        """
+        y, dy = s
+
+        # Calculate the next state using the PT2 system equation
+        dydt = (1 / tau**2) * (u - 2*zeta*tau*dy - K*y)
+        y_new = y + dt * dy
+        dy_new = dy + dt * dydt
+        return (y_new, dy_new)
+
+    def get_flow(self) -> float:
+        """Return measured outflow in liters/s and store real outflow internally.
+        This simplified model responds to pump status changes with a second order system.
+        """
+        error =  random.gauss(0, 5) * self.current_flow_rate_lps / self.nominal_flow_rate_lps
+
+        if self.pump_on == True:
+            input_signal = self.nominal_flow_rate_lps
         else:
             input_signal = 0
+
         # Calculate euler steps for PT2 system
-        euler_steps = int(self.sim_step/self.dt)
-        for _ in range(euler_steps):
-            next_state = pt2_system_step((self.current_flow_rate, self.d_current_flow_rate), input_signal, self.dt, self.K, self.zeta, self.tau)
-            self.current_flow_rate = next_state[0]
-            self.d_current_flow_rate = next_state[1]
-        return abs(self.current_flow_rate+error)
+        n_euler_steps = int(self.sim_step / self.dt)
+        for _ in range(n_euler_steps):
+            next_state = Pump._pt2_system_step(
+                (self.current_flow_rate_lps, self.d_current_flow_rate_lps2),
+                input_signal,
+                self.dt,
+                self.K,
+                self.zeta,
+                self.tau)
+            self.current_flow_rate_lps = next_state[0]
+            self.d_current_flow_rate_lps2 = next_state[1]
+        return abs(self.current_flow_rate_lps + error)
