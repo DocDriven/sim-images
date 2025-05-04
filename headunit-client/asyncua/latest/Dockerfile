@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim AS base
+FROM python:3.11.12-slim-bookworm
 
 # set environment variables here with 'ENV VAR=value'
 # this allows dynamic customization of container behavior
@@ -6,39 +6,16 @@ FROM debian:bookworm-slim AS base
 # address of the PLC OPC UA server
 ENV SERVER_URI=
 
-# update index and install packages if necessary with
-RUN apt-get update && apt-get install -y \
-    python3.11 \
-    libssl-dev \
-    libsqlite3-dev \
-    sqlite3
-
-FROM base AS builder
-
-RUN apt-get install -y \
-    build-essential \
-    cmake \
-    curl \
-    python3-pip \
-    libffi-dev \
-    libjpeg-dev \
-    pkg-config
-
-RUN curl -L sh.rustup.rs | sh -s -- -y
-
-ENV PATH="/root/.cargo/bin:${PATH}"
-
-RUN pip install --break-system-packages \
+# Install needed Python packages
+RUN pip install \
     asyncua \
-    pandas \
+    bidict \
     dash
 
-FROM base AS runtime
+# Copy app files
+COPY /app /app
 
-COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
-
-COPY /app /usr/src/app
-
+# Copy PKI scripts
 COPY /pki /pki
 
 # startup is controlled by this script which depends on environment variables
