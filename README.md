@@ -10,4 +10,4 @@ Contains a collection of OPC UA application implementations.
 - Writing only percentage values or absolute or both?
 - Removing MyObject/MyVariable default node?
 - Hardcode namespace/node pairs instead of requesting them at each upstart? Has to be tested
-
+- add pki part to headunit
