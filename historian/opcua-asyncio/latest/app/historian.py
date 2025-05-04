@@ -37,9 +37,9 @@ async def db_writer_task(database: str):
         logger.info(f"[INFO] Connected to database")
         try:
             while True:
-                table, val = await value_queue.get()
-                logger.info(f"[INFO]: Insert {val} into {table}")
-                await db.execute(f"INSERT INTO {table} (pct) VALUES (?)", (val,))
+                table, value = await value_queue.get()
+                logger.info(f"[INFO]: Insert {value} into {table}")
+                await db.execute(f"INSERT INTO {table} (pct) VALUES (?)", (value,))
                 await db.commit()
         except asyncio.TimeoutError as e:
             logger.error(f"[ERROR] Timeout error during write: {e}. Skipping...")
