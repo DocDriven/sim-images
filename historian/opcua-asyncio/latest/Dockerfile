@@ -3,6 +3,9 @@ FROM python:3.11.12-slim-bookworm
 # set environment variables here with 'ENV VAR=value'
 # this allows dynamic customization of container behavior
 
+# address of the PLC OPC UA server
+ENV SERVER_URI=
+
 # update index and install packages if necessary with
 RUN apt-get update && apt-get install -y \
     sqlite3 \
